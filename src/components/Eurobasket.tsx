@@ -300,7 +300,7 @@ const Eurobasket: React.FC = () => {
   const recentMatches = [...matches].reverse().slice(0, 2);
 
   return (
-    <div className="max-w-xl mx-auto">
+    <div className="max-w-xl mx-auto" style={{ fontFamily: "'Montserrat', sans-serif" }}>
       <div
         className="rounded-2xl shadow-sm border border-green-600 overflow-hidden"
         style={{ backgroundColor: "#1a4d3a" }}
@@ -406,7 +406,7 @@ const Eurobasket: React.FC = () => {
                     </th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-gray-700">
+                <tbody className="divide-y divide-gray-700 ">
                   {sortedTeams.length === 0 ? (
                     <tr>
                       <td
