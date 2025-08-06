@@ -224,6 +224,8 @@ const PremierLeague: React.FC = () => {
               Premier League Tracker
             </h1>
           </div>
+
+          {/* Add Team */}
           <div className="p-4 border-b border-gray-200">
             <h2 className="text-lg font-medium text-gray-900 mb-2">Add Team</h2>
             <div className="flex gap-3">
@@ -243,12 +245,15 @@ const PremierLeague: React.FC = () => {
               </button>
             </div>
           </div>
+
+          {/* Add Match Result */}
           <div className="p-4 border-b border-gray-200">
             <h2 className="text-lg font-medium text-gray-900 mb-2">
               Add Match Result
             </h2>
             <div className="space-y-4">
-              <div className="flex items-center gap-3">
+              {/* Dropdowns */}
+              <div className="flex flex-col sm:flex-row gap-3">
                 <select
                   value={homeTeam}
                   onChange={(e) => setHomeTeam(e.target.value)}
@@ -261,26 +266,6 @@ const PremierLeague: React.FC = () => {
                     </option>
                   ))}
                 </select>
-
-                <div className="flex items-center gap-2">
-                  <input
-                    type="number"
-                    min="0"
-                    value={homeScore}
-                    onChange={(e) => setHomeScore(e.target.value)}
-                    placeholder="0"
-                    className="w-16 px-3 py-2 border border-gray-300 rounded-lg text-center focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
-                  />
-                  <span className="text-gray-500 font-medium">-</span>
-                  <input
-                    type="number"
-                    min="0"
-                    value={awayScore}
-                    onChange={(e) => setAwayScore(e.target.value)}
-                    placeholder="0"
-                    className="w-16 px-3 py-2 border border-gray-300 rounded-lg text-center focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
-                  />
-                </div>
 
                 <select
                   value={awayTeam}
@@ -296,6 +281,28 @@ const PremierLeague: React.FC = () => {
                 </select>
               </div>
 
+              {/* Scores */}
+              <div className="flex items-center justify-center gap-2">
+                <input
+                  type="number"
+                  min="0"
+                  value={homeScore}
+                  onChange={(e) => setHomeScore(e.target.value)}
+                  placeholder="0"
+                  className="w-20 px-3 py-2 border border-gray-300 rounded-lg text-center focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
+                />
+                <span className="text-gray-600 font-medium">:</span>
+                <input
+                  type="number"
+                  min="0"
+                  value={awayScore}
+                  onChange={(e) => setAwayScore(e.target.value)}
+                  placeholder="0"
+                  className="w-20 px-3 py-2 border border-gray-300 rounded-lg text-center focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
+                />
+              </div>
+
+              {/* Submit */}
               <button
                 onClick={addMatchResult}
                 className="w-full px-4 py-2 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
@@ -304,14 +311,16 @@ const PremierLeague: React.FC = () => {
               </button>
             </div>
           </div>
+
+          {/* League Standings */}
           <div className="p-4">
             <h2 className="text-lg font-medium text-gray-900 mb-4">
               League Standings
             </h2>
             <div className="overflow-hidden border border-gray-200 rounded-lg">
               <div
-                className="overflow-x-auto max-h-full	"
-                style={{ maxHeight: "200px" }}
+                className="overflow-x-auto max-h-full"
+                style={{ maxHeight: "150px" }}
               >
                 <table className="w-full text-xs table-fixed">
                   <thead className="bg-gray-50 sticky top-0">
@@ -356,7 +365,7 @@ const PremierLeague: React.FC = () => {
                       sortedTeams.map((team, index) => (
                         <tr
                           key={team.name}
-                          className={`hover:bg-gray-50 transition-colors`}
+                          className="hover:bg-gray-50 transition-colors"
                         >
                           <td className="px-4 py-3 text-sm font-medium text-gray-900">
                             {index + 1}
