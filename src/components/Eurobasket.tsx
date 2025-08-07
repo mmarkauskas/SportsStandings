@@ -300,13 +300,19 @@ const Eurobasket: React.FC = () => {
   const recentMatches = [...matches].reverse().slice(0, 2);
 
   return (
-    <div className="max-w-xl mx-auto" style={{ fontFamily: "'Montserrat', sans-serif" }}>
+    <div
+      className="max-w-xl mx-auto"
+      style={{ fontFamily: "'Montserrat', sans-serif" }}
+    >
       <div
         className="rounded-2xl shadow-sm border border-green-600 overflow-hidden"
         style={{ backgroundColor: "#1a4d3a" }}
       >
         {/* Header */}
-        <div className="px-6 py-4 border-b border-green-700/30" style={{ backgroundColor: "#1a4d3a" }}>
+        <div
+          className="px-6 py-4 border-b border-green-700/30"
+          style={{ backgroundColor: "#1a4d3a" }}
+        >
           <h1 className="text-xl font-semibold text-white">Eurobasket</h1>
         </div>
 

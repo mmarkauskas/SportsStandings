@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Trophy, X } from 'lucide-react';
+import { Trophy, X } from "lucide-react";
 
 interface Player {
   name: string;
@@ -24,11 +24,11 @@ const Wimbledon: React.FC = () => {
   const [players, setPlayers] = useState<Player[]>([]);
   const [matches, setMatches] = useState<Match[]>([]);
   const [isLoaded, setIsLoaded] = useState(false);
-  
+
   // Modal states
   const [showAddPlayerModal, setShowAddPlayerModal] = useState(false);
   const [showAddScoreModal, setShowAddScoreModal] = useState(false);
-  
+
   // Form states
   const [playerName, setPlayerName] = useState("");
   const [player1, setPlayer1] = useState("");
@@ -39,7 +39,7 @@ const Wimbledon: React.FC = () => {
   useEffect(() => {
     const savedPlayers = localStorage.getItem("wimbledon_players");
     const savedMatches = localStorage.getItem("wimbledon_matches");
-    
+
     if (savedPlayers) {
       try {
         setPlayers(JSON.parse(savedPlayers));
@@ -47,7 +47,7 @@ const Wimbledon: React.FC = () => {
         console.error("Error while loading players:", e);
       }
     }
-    
+
     if (savedMatches) {
       try {
         setMatches(JSON.parse(savedMatches));
@@ -55,7 +55,7 @@ const Wimbledon: React.FC = () => {
         console.error("Error while loading matches:", e);
       }
     }
-    
+
     setIsLoaded(true);
   }, []);
 
@@ -76,8 +76,10 @@ const Wimbledon: React.FC = () => {
       alert("Please enter a player name.");
       return;
     }
-    
-    if (players.find((p) => p.name.toLowerCase() === playerName.toLowerCase())) {
+
+    if (
+      players.find((p) => p.name.toLowerCase() === playerName.toLowerCase())
+    ) {
       alert("Player already exists.");
       return;
     }
@@ -110,7 +112,7 @@ const Wimbledon: React.FC = () => {
       alert("Please select both players.");
       return;
     }
-    
+
     if (player1 === player2) {
       alert("Players must be different.");
       return;
@@ -118,13 +120,8 @@ const Wimbledon: React.FC = () => {
 
     const p1Sets = parseInt(player1Sets);
     const p2Sets = parseInt(player2Sets);
-    
-    if (
-      isNaN(p1Sets) ||
-      isNaN(p2Sets) ||
-      p1Sets < 0 ||
-      p2Sets < 0
-    ) {
+
+    if (isNaN(p1Sets) || isNaN(p2Sets) || p1Sets < 0 || p2Sets < 0) {
       alert("Please enter valid set scores (0 or greater).");
       return;
     }
@@ -210,7 +207,6 @@ const Wimbledon: React.FC = () => {
   return (
     <div className="max-w-xl mx-auto">
       <div className="rounded-2xl shadow-sm border border-slate-300 overflow-hidden bg-slate-50">
-        
         {/* Header */}
         <div className="px-6 py-4 bg-slate-100 border-b border-slate-200">
           <h1 className="text-xl font-bold text-slate-800 font-mono">
@@ -239,10 +235,7 @@ const Wimbledon: React.FC = () => {
         {/* Standings */}
         <div className="p-6">
           <div className="overflow-hidden border border-slate-300 rounded-xl bg-white">
-            <div
-              className="overflow-x-auto"
-              style={{ maxHeight: "250px" }}
-            >
+            <div className="overflow-x-auto" style={{ maxHeight: "250px" }}>
               <table className="w-full text-xs font-mono">
                 <thead className="sticky top-0 bg-slate-100">
                   <tr>
@@ -251,9 +244,6 @@ const Wimbledon: React.FC = () => {
                     </th>
                     <th className="px-4 py-3 text-left text-xs font-bold text-slate-700 uppercase tracking-wider">
                       Player
-                    </th>
-                    <th className="px-4 py-3 text-center text-xs font-bold text-slate-700 uppercase tracking-wider">
-                      P
                     </th>
                     <th className="px-4 py-3 text-center text-xs font-bold text-slate-700 uppercase tracking-wider">
                       P
@@ -276,7 +266,9 @@ const Wimbledon: React.FC = () => {
                         colSpan={7}
                         className="px-6 py-12 text-center text-slate-500"
                       >
-                        <div className="text-sm font-mono">No players added yet</div>
+                        <div className="text-sm font-mono">
+                          No players added yet
+                        </div>
                       </td>
                     </tr>
                   ) : (
@@ -286,7 +278,9 @@ const Wimbledon: React.FC = () => {
                         className="hover:bg-slate-50 transition-colors"
                       >
                         <td className="px-4 py-3 text-sm font-bold text-slate-600">
-                          {index === 0 && <Trophy className="inline w-4 h-4 text-amber-500 mr-1" />}
+                          {index === 0 && (
+                            <Trophy className="inline w-4 h-4 text-amber-500 mr-1" />
+                          )}
                           {index + 1}
                         </td>
                         <td className="px-4 py-3 text-sm font-medium text-slate-800">
@@ -295,19 +289,20 @@ const Wimbledon: React.FC = () => {
                         <td className="px-4 py-3 text-sm text-slate-600 text-center">
                           {player.played}
                         </td>
-                        <td className="px-4 py-3 text-sm text-slate-600 text-center">
-                          {player.played}
-                        </td>
                         <td className="px-4 py-3 text-sm text-center font-medium">
                           <div className="flex items-center justify-center gap-1">
                             <div className="w-2 h-2 bg-emerald-500 rounded-full"></div>
-                            <span className="text-slate-700">{player.wins}</span>
+                            <span className="text-slate-700">
+                              {player.wins}
+                            </span>
                           </div>
                         </td>
                         <td className="px-4 py-3 text-sm text-center font-medium">
                           <div className="flex items-center justify-center gap-1">
                             <X className="w-3 h-3 text-red-500" />
-                            <span className="text-slate-700">{player.losses}</span>
+                            <span className="text-slate-700">
+                              {player.losses}
+                            </span>
                           </div>
                         </td>
                         <td className="px-4 py-3 text-sm font-bold text-slate-800 text-center">
@@ -330,7 +325,7 @@ const Wimbledon: React.FC = () => {
             <h3 className="text-lg font-bold text-slate-800 mb-4 font-mono">
               Add Player
             </h3>
-            
+
             <div className="space-y-4">
               <input
                 type="text"
@@ -340,13 +335,13 @@ const Wimbledon: React.FC = () => {
                 className="w-full px-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-slate-500 focus:border-slate-500 outline-none font-mono"
                 autoFocus
                 onKeyDown={(e) => {
-                  if (e.key === 'Enter') {
+                  if (e.key === "Enter") {
                     addPlayer();
                   }
                 }}
               />
             </div>
-            
+
             <div className="flex gap-3 mt-6">
               <button
                 onClick={() => {
@@ -376,7 +371,7 @@ const Wimbledon: React.FC = () => {
             <h3 className="text-lg font-bold text-slate-800 mb-4 font-mono">
               Add Match Result
             </h3>
-            
+
             <div className="space-y-4">
               <div className="grid grid-cols-2 gap-3">
                 <select
@@ -407,7 +402,9 @@ const Wimbledon: React.FC = () => {
 
               <div className="flex items-center justify-center gap-4">
                 <div className="text-center">
-                  <label className="block text-xs font-mono text-slate-600 mb-1">Sets Won</label>
+                  <label className="block text-xs font-mono text-slate-600 mb-1">
+                    Sets Won
+                  </label>
                   <input
                     type="number"
                     min="0"
@@ -417,9 +414,13 @@ const Wimbledon: React.FC = () => {
                     className="w-20 px-3 py-3 border border-slate-300 rounded-xl text-center focus:ring-2 focus:ring-slate-500 focus:border-slate-500 outline-none text-lg font-bold font-mono"
                   />
                 </div>
-                <span className="text-slate-400 font-mono font-bold text-lg mt-6">–</span>
+                <span className="text-slate-400 font-mono font-bold text-lg mt-6">
+                  –
+                </span>
                 <div className="text-center">
-                  <label className="block text-xs font-mono text-slate-600 mb-1">Sets Won</label>
+                  <label className="block text-xs font-mono text-slate-600 mb-1">
+                    Sets Won
+                  </label>
                   <input
                     type="number"
                     min="0"

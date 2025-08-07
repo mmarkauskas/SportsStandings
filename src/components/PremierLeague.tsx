@@ -219,10 +219,15 @@ const PremierLeague: React.FC = () => {
   });
 
   return (
-    <div className="max-w-xl px-2 max-h-full mx-auto" style={{ fontFamily: "'Roboto', sans-serif" }}>
+    <div
+      className="max-w-xl px-2 max-h-full mx-auto"
+      style={{ fontFamily: "'Roboto', sans-serif" }}
+    >
       <div className="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden">
         <div className="bg-gradient-to-r from-blue-600 to-blue-700 px-4 py-2">
-          <h1 className="text-xl font-semibold text-white" >Premier League Tracker</h1>
+          <h1 className="text-xl font-semibold text-white">
+            Premier League Tracker
+          </h1>
         </div>
 
         <AddTeamForm
@@ -244,17 +249,34 @@ const PremierLeague: React.FC = () => {
           addMatchResult={addMatchResult}
         />
 
-        <div className="overflow-x-auto mb-6 p-6" style={{ maxHeight: "200px"}}>
+        <div
+          className="overflow-x-auto mb-6 p-6"
+          style={{ maxHeight: "200px" }}
+        >
           <table className="w-full border-collapse text-left text-gray-500">
             <thead className="bg-gray-50 border-b border-gray-200">
               <tr>
-                <th className="px-4 py-3 text-sm font-semibold text-gray-900">#</th>
-                <th className="px-4 py-3 text-sm font-semibold text-gray-900">Team</th>
-                <th className="px-4 py-3 text-sm font-semibold text-gray-900 text-center">P</th>
-                <th className="px-4 py-3 text-sm font-semibold text-gray-900 text-center">W</th>
-                <th className="px-4 py-3 text-sm font-semibold text-gray-900 text-center">D</th>
-                <th className="px-4 py-3 text-sm font-semibold text-gray-900 text-center">L</th>
-                <th className="px-4 py-3 text-sm font-semibold text-gray-900 text-center">Pts</th>
+                <th className="px-4 py-3 text-sm font-semibold text-gray-900">
+                  #
+                </th>
+                <th className="px-4 py-3 text-sm font-semibold text-gray-900">
+                  Team
+                </th>
+                <th className="px-4 py-3 text-sm font-semibold text-gray-900 text-center">
+                  P
+                </th>
+                <th className="px-4 py-3 text-sm font-semibold text-gray-900 text-center">
+                  W
+                </th>
+                <th className="px-4 py-3 text-sm font-semibold text-gray-900 text-center">
+                  D
+                </th>
+                <th className="px-4 py-3 text-sm font-semibold text-gray-900 text-center">
+                  L
+                </th>
+                <th className="px-4 py-3 text-sm font-semibold text-gray-900 text-center">
+                  Pts
+                </th>
               </tr>
             </thead>
             <tbody>

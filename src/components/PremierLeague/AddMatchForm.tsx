@@ -31,7 +31,9 @@ const AddMatchForm: React.FC<AddMatchFormProps> = ({
 }) => {
   return (
     <div className="p-4 border-b border-gray-200">
-      <h2 className="text-lg font-medium text-gray-900 mb-2">Add Match Result</h2>
+      <h2 className="text-lg font-medium text-gray-900 mb-2">
+        Add Match Result
+      </h2>
       <div className="space-y-4">
         {/* Dropdowns */}
         <div className="flex flex-col sm:flex-row gap-3">
